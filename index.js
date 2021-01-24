@@ -28,11 +28,18 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
+function summation(num) {
+  let numbers = [];
 
+  for (let counter = 0; counter < num; counter++){
+    numbers.push(counter+1);
   }
- 
+  let sum = numbers.reduce((a,b)=>{
+    return a + b;
+  });
+  return sum;
+  }
+ console.log(summation(4));
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
 // Given this zoo data from around the United States, follow the instructions below. Use the specific array methods in the requests below to solve the problems.
@@ -56,9 +63,16 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+  function animalNames(arr){
+    let displayNames = [];
+  
+ arr.forEach(element => displayNames.push('name: ' + element.animal_name + ', scientific: ' + element.scientific_name))
+  
+  return displayNames;
+}
+
+console.log(animalNames(zooAnimals));
+  
   
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
@@ -67,10 +81,14 @@ const zooAnimals = [
   For example: ['jackal, asiatic', .....]
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+ function lowerCaseNames(arr, callback){
+  const lowerNames = []
   
+  callback(arr).map(element => lowerNames.push(element.toLowerCase()));
+    return lowerNames;
+  }
+
+console.log(lowerCaseNames(zooAnimals, animalNames));
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
