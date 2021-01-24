@@ -81,23 +81,34 @@ console.log(animalNames(zooAnimals));
   For example: ['jackal, asiatic', .....]
   */
 
- function lowerCaseNames(arr, callback){
+ function lowerCaseNames(arr){
   const lowerNames = []
   
-  callback(arr).map(element => lowerNames.push(element.toLowerCase()));
+  arr.map(element => lowerNames.push('Name: ' + element.animal_name.toLowerCase() + ', scientific: ' + element.scientific_name.toLowerCase()));
     return lowerNames;
   }
 
-console.log(lowerCaseNames(zooAnimals, animalNames));
+console.log(lowerCaseNames(zooAnimals));
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
   Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
   */
 
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowPopulationAnimals(arr){
+    
+ const lowPop = arr.filter(function(item) {
+   if (item.population < 5 ){
+     return item;
+
+   }
+
+ })
+return lowPop;
+
   }
+
+  console.log(lowPopulationAnimals(zooAnimals));
   
 
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
@@ -106,9 +117,20 @@ console.log(lowerCaseNames(zooAnimals, animalNames));
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+  function USApop(arr){
+    
+    let num = [];
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+ 
+    arr.map(element => num.push(element.population))
+   
+  return num.reduce(reducer)
+   
+ 
+   
+   }
+ 
+ console.log(USApop(zooAnimals));
   
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
@@ -119,23 +141,28 @@ console.log(lowerCaseNames(zooAnimals, animalNames));
     * The consume function should return the invocation of cb, passing a and b into cb as arguments
   */
 
-  function consume(/*Your Code Here */){
-    /*Your Code Here */
+
+  function consume(a, b, cb){
+    return cb(a,b)
   }
- 
+  
   
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
   
-function add(/*Your Code Here */){
-    /*Your Code Here*/
+function add(a, b){
+  return a + b;
   }
+
+  
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
   
-function multiply(/*Your Code Here */){
-   /*Your Code Here */
+function multiply(a,b){
+   return a * b;
   }
+
+  
 
  // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
   
